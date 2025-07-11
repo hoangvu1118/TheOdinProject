@@ -1,0 +1,27 @@
+*{
+    margin: 5px;
+    padding: 0;
+}
+body{
+    font-size: 20px;
+    font-family: "Garamond", Serif;
+}
+.home{
+    display: flex;
+    padding: 5px;
+}
+
+.home h1{
+    text-align: center;
+}
+
+.left{
+    margin: 10px;
+}
+.right{
+    margin: 10px 20px;
+}
+ul, ol{
+    padding-left: 50px;
+    padding-bottom: 10px;
+}
