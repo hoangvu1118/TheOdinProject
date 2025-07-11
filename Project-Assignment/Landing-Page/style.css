@@ -134,3 +134,14 @@ body{
     flex-direction: column;
     align-items: flex-end;
 }
+.box4{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: #3882F6;
+    border-radius: 8px;
+}
+
+.fourth{
+    padding: 50px  200px;
+}
