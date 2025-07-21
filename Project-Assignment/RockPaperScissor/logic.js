@@ -53,10 +53,17 @@ function playRound(human){
     console.log("Computer: ", computerScore, " | Human: ", humanScore )
 }
 
-function playGame(){
-}
-
 let buttons = document.querySelector(".userChoice")
+// compScore.addEventListener('mouseup', ()=>{
+//     compScore.value = computerScore
+// })
+
+// userScore.addEventListener('mouseup',() => {
+//     userScore.value = humanScore
+// })
+
+
+
 
 buttons.addEventListener('click', (event) => {
     let target = event.target
@@ -71,4 +78,10 @@ buttons.addEventListener('click', (event) => {
             playRound("scissor")
             break
     }
+    let compScore = document.querySelector(".element.computerScore")
+    let userScore = document.querySelector(".element.userScore")
+    
+    compScore.textContent = `Score: ${computerScore}`
+    userScore.textContent = `Score: ${humanScore}`
+    
 })

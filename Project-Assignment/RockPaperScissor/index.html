@@ -4,14 +4,31 @@
         <meta charset="utf-8">
         <title>RPS Game</title>
         <script defer src="logic.js"></script> 
-        <link rel="stylesheet" href="logic.js">
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
+
+        <div class="game">
+            <div class="computer">
+                <div class="element">Computer</div>
+                <div class="element img"></div>
+                <div class="element computerScore">Score: </div>
+            </div>
+
+            <div class="user">
+                <div class="element">You</div>
+                <div class="element img"></div>
+                <div class="element userScore">Score: </div>
+            </div>
+        </div>
+
         <div class="userChoice">
             <button id="rock">Rock</button>
             <button id="paper">Paper</button>
             <button id="scissor">Scissor</button>
         </div>
+
+
     </body>
 </html>
