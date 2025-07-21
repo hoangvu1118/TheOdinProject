@@ -68,6 +68,18 @@ function updateScore(){
     
     compScore.textContent = `Score: ${computerScore}`
     userScore.textContent = `Score: ${humanScore}`
+    
+    if(computerScore == 5){
+        alert("You loose, The computer reaches 5 First!!")
+        computerScore = humanScore = 0
+        updateScore()
+    }
+    else if(humanScore == 5){
+        alert("Congratulation! You're the WINNER!")
+        computerScore = 0
+        humanScore = 0
+        updateScore()
+    }
 }
 
 function displayImage(userChoice){
@@ -128,4 +140,6 @@ buttons.addEventListener('click', (event) => {
 
     updateScore()
     displayImage(choice)
+
+
 })
