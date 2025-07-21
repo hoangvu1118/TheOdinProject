@@ -17,12 +17,9 @@ function getComputerChoice(){
     }
 }
 
-function playRound(){
+function playRound(human){
     computerChocie = getComputerChoice()
     computer = computerChocie.toLocaleLowerCase()
-
-    let userChoice = prompt("What is ur choice (Rock | Paper | Scissor) ?")
-    human = userChoice.toLocaleLowerCase()
 
     if(computer == human){
         console.log("Tie Game")
@@ -57,9 +54,21 @@ function playRound(){
 }
 
 function playGame(){
-    for(let i = 0; i < 5; i++){
-        console.log("Round: ", i+1)
-        playRound()
-    }
 }
-playGame()
+
+let buttons = document.querySelector(".userChoice")
+
+buttons.addEventListener('click', (event) => {
+    let target = event.target
+    switch(target.id){
+        case "rock":
+            playRound("rock")
+            break
+        case "paper":
+            playRound("paper")
+            break
+        case "scissor":
+            playRound("scissor")
+            break
+    }
+})
