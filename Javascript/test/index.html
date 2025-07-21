@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Propagation Test</title>
+  <style>
+    #grandparent {
+      padding: 30px;
+      background-color: lightcoral;
+    }
+    #parent {
+      padding: 30px;
+      background-color: lightblue;
+    }
+    #child {
+      padding: 15px;
+      background-color: lightgreen;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="grandparent">
+    Grandparent
+    <div id="parent">
+      Parent
+      <button id="child">Click Me (Child)</button>
+    </div>
+  </div>
+
+  <script>
+    // Grandparent (bubbling)
+    document.querySelector("#grandparent").addEventListener("click", () => {
+      alert("Grandparent clicked");
+    });
+
+    // Parent (bubbling)
+    document.querySelector("#parent").addEventListener("click", () => {
+      alert("Parent clicked");
+    });
+
+    // Child (target + stopPropagation)
+    document.querySelector("#child").addEventListener("click", (event) => {
+      alert("Child clicked");
+      event.stopPropagation(); // Prevents bubbling up
+    });
+
+    // Optional: Capture example
+    document.addEventListener("click", () => {
+      console.log("Document capturing");
+    }, true); // capture phase
+  </script>
+</body>
+</html>
