@@ -1,6 +1,7 @@
 let containerDiv = document.querySelector(".container")
-let numRow = 16
-let numCol = 16
+let numRow = 40
+let numCol = 45
+let isDrawing = false
 
 for(let i = 1; i <= numRow * numCol; i++){
     let gridSquare = document.createElement("div")
@@ -13,7 +14,9 @@ let markSquare = document.querySelectorAll(".grid-square")
 function markColorOnMouseMovement(){
     markSquare.forEach((square) => {
         square.addEventListener("mousemove", () => {
-            square.style.backgroundColor = "red";
+            if(isDrawing){
+                square.style.backgroundColor = "red";
+            }
         })
     })
 }
@@ -21,12 +24,14 @@ function markColorOnMouseMovement(){
 
 let startButton = document.querySelector(".start")
 startButton.addEventListener("click", () => {
+    isDrawing = true
     markColorOnMouseMovement()
 })
 
 let resetButton = document.querySelector(".newDrawing")
 resetButton.addEventListener("click", () => {
     markSquare.forEach((square) => {  
+        isDrawing = false
         square.style.backgroundColor = "white";
     })
 })
