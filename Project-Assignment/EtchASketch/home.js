@@ -8,12 +8,21 @@ for(let i = 1; i <= numRow * numCol; i++){
     containerDiv.appendChild(gridSquare)
 }
 
-function trackTheMouseMovementOnGrid(){
-    
+
+function markColorOnMouseMovement(){
+    let markSquare = document.querySelectorAll(".grid-square")
+    markSquare.forEach((square) => {
+        square.addEventListener("mousemove", () => {
+            square.style.backgroundColor = "red";
+        })
+    })
 }
 
 
 let startButton = document.querySelector(".start")
 startButton.addEventListener("click", () => {
-
+    markColorOnMouseMovement()
 })
+
+let resetButton = document.querySelector(".newDrawing")
+
