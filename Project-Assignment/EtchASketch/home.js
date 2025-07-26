@@ -3,6 +3,7 @@ let row = 36
 let col = 40
 let isDrawing = false
 let markSquare
+let darken = 0.1
 
 editGrid(row, col)
 function editGrid(numRow, numCol){
@@ -19,7 +20,14 @@ function markColorOnMouseMovement(){
         square.addEventListener("mousemove", () => {
             if(isDrawing){
                 const hexColor = getRandomHexColor();
-                square.style.backgroundColor = hexColor;
+                if(darken <= 1){
+                   square.style.backgroundColor = "black";
+                   square.style.opacity = darken 
+                   darken += 0.1
+                }
+                else{
+                    square.style.backgroundColor = hexColor;
+                }
             }
         })
     })
@@ -51,6 +59,7 @@ let resetButton = document.querySelector(".newDrawing")
 resetButton.addEventListener("click", () => {
     markSquare.forEach((square) => {  
         isDrawing = false
+        darken = 0
         square.style.backgroundColor = "white";
     })
 })
@@ -61,6 +70,7 @@ newSketch.addEventListener("click", () => {
     while(column * column > col * row) {
         column = window.prompt("Please enter a smaller number max(30/side): ")
     }
+    darken = 0
     removeSketch()
     editGrid(column, column)
 })
