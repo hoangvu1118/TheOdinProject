@@ -18,11 +18,18 @@ function markColorOnMouseMovement(){
     markSquare.forEach((square) => {
         square.addEventListener("mousemove", () => {
             if(isDrawing){
-                square.style.backgroundColor = "red";
+                const hexColor = getRandomHexColor();
+                square.style.backgroundColor = hexColor;
             }
         })
     })
 }
+
+function getRandomHexColor() {
+  const randomColor = Math.floor(Math.random() * 0xFFFFFF).toString(16);
+  return `#${randomColor.padStart(6, '0')}`;
+}
+
 
 function removeSketch(){
     let newGrid = document.querySelector(".container")
