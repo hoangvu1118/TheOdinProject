@@ -13,13 +13,13 @@ body{
 .container{
     display: flex;
     height: 600px;
-    width: 1200px;
+    width: 960px;
     flex-wrap: wrap;
-    flex-shrink: 1;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
     padding: 5px;
+    max-width: 100%;
 }
 
 .grid-square{

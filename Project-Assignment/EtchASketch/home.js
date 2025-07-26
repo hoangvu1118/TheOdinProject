@@ -1,17 +1,20 @@
 let containerDiv = document.querySelector(".container")
-let numRow = 40
-let numCol = 45
+let row = 36
+let col = 40
 let isDrawing = false
+let markSquare
 
-for(let i = 1; i <= numRow * numCol; i++){
-    let gridSquare = document.createElement("div")
-    gridSquare.classList.add("grid-square")
-    containerDiv.appendChild(gridSquare)
+editGrid(row, col)
+function editGrid(numRow, numCol){
+    for(let i = 1; i <= numRow * numCol; i++){
+        let gridSquare = document.createElement("div")
+        gridSquare.classList.add("grid-square")
+        containerDiv.appendChild(gridSquare)
+    }
 }
 
-
-let markSquare = document.querySelectorAll(".grid-square")
 function markColorOnMouseMovement(){
+    markSquare = document.querySelectorAll(".grid-square")
     markSquare.forEach((square) => {
         square.addEventListener("mousemove", () => {
             if(isDrawing){
@@ -19,6 +22,15 @@ function markColorOnMouseMovement(){
             }
         })
     })
+}
+
+function removeSketch(){
+    let newGrid = document.querySelector(".container")
+    let boxes = newGrid.querySelectorAll(".grid-square")
+
+    boxes.forEach((box => {
+        newGrid.removeChild(box)
+    }))
 }
 
 
@@ -34,4 +46,14 @@ resetButton.addEventListener("click", () => {
         isDrawing = false
         square.style.backgroundColor = "white";
     })
+})
+
+let newSketch = document.querySelector(".newSketch")
+newSketch.addEventListener("click", () => {
+    let column = window.prompt("How many squares per side for the new grid?")
+    while(column * column > col * row) {
+        column = window.prompt("Please enter a smaller number max(30/side): ")
+    }
+    removeSketch()
+    editGrid(column, column)
 })
