@@ -9,8 +9,8 @@ for(let i = 1; i <= numRow * numCol; i++){
 }
 
 
+let markSquare = document.querySelectorAll(".grid-square")
 function markColorOnMouseMovement(){
-    let markSquare = document.querySelectorAll(".grid-square")
     markSquare.forEach((square) => {
         square.addEventListener("mousemove", () => {
             square.style.backgroundColor = "red";
@@ -25,4 +25,8 @@ startButton.addEventListener("click", () => {
 })
 
 let resetButton = document.querySelector(".newDrawing")
-
+resetButton.addEventListener("click", () => {
+    markSquare.forEach((square) => {  
+        square.style.backgroundColor = "white";
+    })
+})
