@@ -1,0 +1,12 @@
+{
+  "name": "08_removefromarray",
+  "version": "1.0.0",
+  "description": "Implement a function that takes an array and some other arguments then removes the other arguments from that array:",
+  "main": "removeFromArray.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

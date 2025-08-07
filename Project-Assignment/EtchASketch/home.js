@@ -17,7 +17,7 @@ function editGrid(numRow, numCol){
 function markColorOnMouseMovement(){
     markSquare = document.querySelectorAll(".grid-square")
     markSquare.forEach((square) => {
-        square.addEventListener("mousemove", () => {
+        square.addEventListener("mouseout", () => {
             if(isDrawing){
                 const hexColor = getRandomHexColor();
                 if(darken <= 1){

@@ -1,0 +1,12 @@
+{
+  "name": "06_repeatstring",
+  "version": "1.0.0",
+  "description": "Write a function that simply repeats the string a given number of times:",
+  "main": "repeatString.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

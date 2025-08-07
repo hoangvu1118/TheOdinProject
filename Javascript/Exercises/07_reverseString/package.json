@@ -1,0 +1,12 @@
+{
+  "name": "07_reversestring",
+  "version": "1.0.0",
+  "description": "Pretty simple, write a function called `reverseString` that returns its input, reversed!",
+  "main": "reverseString.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

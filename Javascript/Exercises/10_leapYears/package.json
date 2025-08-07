@@ -1,0 +1,12 @@
+{
+  "name": "10_leapyears",
+  "version": "1.0.0",
+  "description": "Create a function that determines whether or not a given year is a leap year. Leap years are determined by the following rules:",
+  "main": "leapYears.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

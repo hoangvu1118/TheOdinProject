@@ -1,0 +1,11 @@
+{
+  "name": "09_sumall",
+  "version": "1.0.0",
+  "description": "Implement a function that takes 2 positive integers and returns the sum of every integer between (and including) them:",
+  "main": "sumAll.js",
+  "scripts": {
+    "test": "jest"},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
