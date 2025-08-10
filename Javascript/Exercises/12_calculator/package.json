@@ -1,0 +1,12 @@
+{
+  "name": "12_calculator",
+  "version": "1.0.0",
+  "description": "The goal for this exercise is to create a calculator that does the following:",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "14_fibonacci",
+  "version": "1.0.0",
+  "description": "Create a function that returns a specific member of the Fibonacci sequence:",
+  "main": "fibonacci.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

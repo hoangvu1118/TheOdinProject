@@ -1,0 +1,12 @@
+{
+  "name": "15_getthetitles",
+  "version": "1.0.0",
+  "description": "You are given an array of objects that represent books with an author and a title that looks like this:",
+  "main": "getTheTitles.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

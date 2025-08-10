@@ -1,0 +1,12 @@
+{
+  "name": "16_findtheoldest",
+  "version": "1.0.0",
+  "description": "Given an array of objects representing people with a birth and death year, return the oldest person.",
+  "main": "findTheOldest.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
