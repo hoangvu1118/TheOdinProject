@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    width: 75px;
+    height:75px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.theCase{
+    background-color: black;
+    width: 400px;
+    height: 600px;
+    border: 5px solid grey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen{
+    background-color: white;
+    width: 400px;
+    height: 200px;
+}
+
+.clearButton{
+    width: 400px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.numberAndOperator{
+    display: flex;
+    margin-top: 5px;
+}
+.number{
+    width: 360px;
+    height: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 7px;
+}
+.operator {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+.zeroAndEqual{
+    display: flex;
+}
+.Zero{
+    width: 210px;
+}
+.Enter{
+    flex: 1
+}
+p{
+    background-color: grey;
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
+}
