@@ -8,6 +8,11 @@ body{
     height: 100vh;
     justify-content: center;
     align-items: center;
+    background-image: url('math.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(5px)
 }
 
 button{
@@ -21,7 +26,7 @@ button{
     background-color: black;
     width: 400px;
     height: 600px;
-    border: 5px solid grey;
+    border: 10px solid grey;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
