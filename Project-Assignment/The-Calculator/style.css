@@ -46,12 +46,20 @@ button{
     border-radius: 5px;
     overflow-x: auto;
 }
-
+.clean{
+    display: flex;
+    gap :7px;
+    box-sizing: border-box;
+}
 .clearButton{
-    width: 400px;
+    width: 207px;
     height: 40px;
     font-weight: bold;
     font-size: 20px;
+}
+.delButton{
+    flex : 1;
+    height: 40px;
 }
 
 .numberAndOperator{
@@ -74,12 +82,16 @@ button{
 }
 .zeroAndEqual{
     display: flex;
+    gap: 7px;
 }
 .Zero{
-    width: 210px;
+    width: 207px;
 }
 .Enter{
-    flex: 1
+    margin-left: auto
+}
+.Dot{
+    width: 100px;
 }
 p{
     background-color: grey;

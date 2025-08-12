@@ -54,9 +54,7 @@ let equalPressed = false
 clickNumber.forEach(num => {
     num.addEventListener("click", () => {
         if(equalPressed == true){
-            currentText = ""
-            screen.innerText = ""
-            expression = []
+            cleanUpScreen()
             equalPressed = false
         }
         currentText += num.textContent
@@ -90,6 +88,12 @@ let clearButton = document.querySelector(".clearButton").addEventListener("click
     expression = []
 })
 
+function cleanUpScreen(){
+    screen.innerText = ""
+    currentText = ""
+    expression = []
+}
+
 let zeroButton = document.querySelector(".Zero").addEventListener("click", () =>{
     screen.innerText += "0"
     currentText += "0"
@@ -108,4 +112,9 @@ let resultEqualSign = document.querySelector(".Enter").addEventListener("click",
     displayResult.textContent = tempResult
     result.appendChild(displayResult)
     equalPressed = true
+})
+
+let deleteButton = document.querySelector(".delButton").addEventListener("click", () => {
+    screen.innerText = screen.innerText.slice(0,-1)
+    currentText = currentText.slice(0,-1)
 })
