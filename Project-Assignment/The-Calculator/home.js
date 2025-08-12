@@ -7,6 +7,10 @@ function subtract(a ,b){
 }
 
 function divide(a , b){
+    if(b === 0){
+        alert("Cannot divide 0!")
+        return 
+    }
     return a / b
 }
 
@@ -46,8 +50,15 @@ let expression = []
 let currentText = ""
 let screen = document.querySelector(".screen")
 let clickNumber = document.querySelectorAll(".numberBox")
+let equalPressed = false
 clickNumber.forEach(num => {
     num.addEventListener("click", () => {
+        if(equalPressed == true){
+            currentText = ""
+            screen.innerText = ""
+            expression = []
+            equalPressed = false
+        }
         currentText += num.textContent
         screen.innerText += num.textContent
         screen.scrollLeft = screen.scrollWidth
@@ -57,8 +68,17 @@ clickNumber.forEach(num => {
 let clickOperator = document.querySelectorAll("#sign").forEach(signs => {
     signs.addEventListener("click", () => {
         expression.push(parseInt(currentText))
+        let tempResult = 0
+        if(expression.length > 2){
+            let operator = expression[1]
+            tempResult = operate(operator, expression[0], expression[2])
+            expression = [tempResult]
+            screen.innerText = expression[0] + " " + signs.textContent + "\u00A0"
+        }
+        else{
+            screen.innerText += " " + signs.textContent + "\u00A0"
+        }
         currentText = ""
-        screen.innerText += " " + signs.textContent + "\u00A0"
         screen.scrollLeft = screen.scrollWidth
         expression.push(signs.textContent)
     })
@@ -75,7 +95,17 @@ let zeroButton = document.querySelector(".Zero").addEventListener("click", () =>
     currentText += "0"
 })
 
-let result = document.querySelector(".Enter").addEventListener("click", () =>{
+let resultEqualSign = document.querySelector(".Enter").addEventListener("click", () =>{
     expression.push(parseInt(currentText))
-    console.log(expression)
+    let tempResult = 0
+    let operator = expression[1]
+    tempResult = operate(operator, expression[0], expression[2])
+    expression = [tempResult]
+
+    let result = document.querySelector(".screen")
+    let displayResult = document.createElement("p")
+    displayResult.classList.add("displayResult")
+    displayResult.textContent = tempResult
+    result.appendChild(displayResult)
+    equalPressed = true
 })

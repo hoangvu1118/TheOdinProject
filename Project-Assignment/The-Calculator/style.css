@@ -33,6 +33,9 @@ button{
 }
 
 .screen{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     background-color: darkgray;
     width: 400px;
     height: 200px;
@@ -42,7 +45,6 @@ button{
     box-sizing: border-box;
     border-radius: 5px;
     overflow-x: auto;
-    white-space: nowrap;
 }
 
 .clearButton{
