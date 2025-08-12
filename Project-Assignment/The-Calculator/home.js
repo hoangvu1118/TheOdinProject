@@ -31,14 +31,38 @@ function operate(operator, a ,b){
 
 let numberArea = document.querySelector(".number")
 function createNumberButtons(){
-    for(let i = 9; i > 0; i--){
+    let order = [7, 8 ,9, 4, 5, 6, 1, 2, 3]
+    order.forEach(num => {
         let numBox = document.createElement("button")
-        numBox.classList.add("numerBox")
+        numBox.classList.add("numberBox")
         numBox.style.width = "100px"
         numBox.style.height = "100px"
-        numBox.innerText = i
+        numBox.innerText = num
         numberArea.appendChild(numBox)
-    }
+    })
 }
-
 createNumberButtons()
+
+let screen = document.querySelector(".screen")
+let clickNumber = document.querySelectorAll(".numberBox")
+clickNumber.forEach(num => {
+    num.addEventListener("click", () => {
+        screen.innerText += num.textContent
+        screen.scrollLeft = screen.scrollWidth
+    })
+})
+
+let clickOperator = document.querySelectorAll("#sign").forEach(signs => {
+    signs.addEventListener("click", () => {
+        screen.innerText += " " + signs.textContent + " "
+        screen.scrollLeft = screen.scrollWidth
+    })
+})
+
+let clearButton = document.querySelector(".clearButton").addEventListener("click", () => {
+    screen.innerText = ""
+})
+
+let zeroButton = document.querySelector(".Zero").addEventListener("click", () =>{
+    screen.innerText += 0
+})

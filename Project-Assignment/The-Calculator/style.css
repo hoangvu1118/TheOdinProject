@@ -23,7 +23,7 @@ button{
 }
 
 .theCase{
-    background-color: black;
+    background-color: darkgray;
     width: 400px;
     height: 600px;
     border: 10px solid grey;
@@ -33,9 +33,16 @@ button{
 }
 
 .screen{
-    background-color: white;
+    background-color: darkgray;
     width: 400px;
     height: 200px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .clearButton{
