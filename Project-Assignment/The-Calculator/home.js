@@ -46,11 +46,13 @@ function createNumberButtons(){
     })
 }
 createNumberButtons()
+
 let expression = []
 let currentText = ""
 let screen = document.querySelector(".screen")
-let clickNumber = document.querySelectorAll(".numberBox")
 let equalPressed = false
+
+let clickNumber = document.querySelectorAll(".numberBox")
 clickNumber.forEach(num => {
     num.addEventListener("click", () => {
         if(equalPressed == true){
@@ -66,17 +68,24 @@ clickNumber.forEach(num => {
 let clickOperator = document.querySelectorAll("#sign").forEach(signs => {
     signs.addEventListener("click", () => {
         expression.push(parseInt(currentText))
+        currentText = ""
+        
+        if(equalPressed){
+            screen.innerText = expression[0]
+            equalPressed = false
+        }
+
         let tempResult = 0
         if(expression.length > 2){
             let operator = expression[1]
             tempResult = operate(operator, expression[0], expression[2])
-            expression = [tempResult]
+            expression = [tempResult]   
             screen.innerText = expression[0] + " " + signs.textContent + "\u00A0"
         }
         else{
             screen.innerText += " " + signs.textContent + "\u00A0"
         }
-        currentText = ""
+        console.log(expression)
         screen.scrollLeft = screen.scrollWidth
         expression.push(signs.textContent)
     })
@@ -104,8 +113,11 @@ let resultEqualSign = document.querySelector(".Enter").addEventListener("click",
     let tempResult = 0
     let operator = expression[1]
     tempResult = operate(operator, expression[0], expression[2])
-    expression = [tempResult]
-
+    console.log(expression)
+    expression = []
+    currentText = tempResult
+    console.log(tempResult)
+    console.log(expression)
     let result = document.querySelector(".screen")
     let displayResult = document.createElement("p")
     displayResult.classList.add("displayResult")
