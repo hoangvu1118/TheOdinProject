@@ -51,6 +51,20 @@ let expression = []
 let currentText = ""
 let screen = document.querySelector(".screen")
 let equalPressed = false
+let dotPressed = false
+
+let pressDot = document.querySelector(".Dot").addEventListener("click", () => {
+    currentText += "."
+    screen.innerText += "."
+    if(currentText.includes(".") && dotPressed){
+        alert("You can not have more than 1 decimal point in a number!")
+        currentText = currentText.slice(0,-1)
+        screen.innerText = screen.innerText.slice(0,-1)
+        console.log(currentText)
+        console.log(dotPressed)
+    }
+    dotPressed = true
+})
 
 let clickNumber = document.querySelectorAll(".numberBox")
 clickNumber.forEach(num => {
@@ -67,9 +81,16 @@ clickNumber.forEach(num => {
 
 let clickOperator = document.querySelectorAll("#sign").forEach(signs => {
     signs.addEventListener("click", () => {
-        expression.push(parseInt(currentText))
+        if(!currentText.includes(".")){
+            expression.push(parseInt(currentText))
+        }
+        else{
+            expression.push(parseFloat(currentText))
+        }
+        console.log(expression)
         currentText = ""
-        
+        dotPressed = false
+
         if(equalPressed){
             screen.innerText = expression[0]
             equalPressed = false
@@ -78,7 +99,7 @@ let clickOperator = document.querySelectorAll("#sign").forEach(signs => {
         let tempResult = 0
         if(expression.length > 2){
             let operator = expression[1]
-            tempResult = operate(operator, expression[0], expression[2])
+            tempResult = Math.round(operate(operator, expression[0], expression[2]) * 100) / 100
             expression = [tempResult]   
             screen.innerText = expression[0] + " " + signs.textContent + "\u00A0"
         }
@@ -101,6 +122,7 @@ function cleanUpScreen(){
     screen.innerText = ""
     currentText = ""
     expression = []
+    dotPressed = false
 }
 
 let zeroButton = document.querySelector(".Zero").addEventListener("click", () =>{
@@ -109,13 +131,19 @@ let zeroButton = document.querySelector(".Zero").addEventListener("click", () =>
 })
 
 let resultEqualSign = document.querySelector(".Enter").addEventListener("click", () =>{
-    expression.push(parseInt(currentText))
+    if(!currentText.includes(".")){
+            expression.push(parseInt(currentText))
+    }
+    else{
+            expression.push(parseFloat(currentText))
+    }
+    console.log(expression)
     let tempResult = 0
     let operator = expression[1]
-    tempResult = operate(operator, expression[0], expression[2])
+    tempResult = Math.round(operate(operator, expression[0], expression[2]) * 100) / 100
     console.log(expression)
     expression = []
-    currentText = tempResult
+    currentText = String(tempResult)
     console.log(tempResult)
     console.log(expression)
     let result = document.querySelector(".screen")
@@ -128,5 +156,11 @@ let resultEqualSign = document.querySelector(".Enter").addEventListener("click",
 
 let deleteButton = document.querySelector(".delButton").addEventListener("click", () => {
     screen.innerText = screen.innerText.slice(0,-1)
+    let finalChar = currentText[currentText.length - 1]
     currentText = currentText.slice(0,-1)
+
+    if(finalChar == "."){
+        dotPressed = false
+    }
 })
+
