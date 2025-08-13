@@ -60,8 +60,6 @@ let pressDot = document.querySelector(".Dot").addEventListener("click", () => {
         alert("You can not have more than 1 decimal point in a number!")
         currentText = currentText.slice(0,-1)
         screen.innerText = screen.innerText.slice(0,-1)
-        console.log(currentText)
-        console.log(dotPressed)
     }
     dotPressed = true
 })
@@ -87,7 +85,6 @@ let clickOperator = document.querySelectorAll("#sign").forEach(signs => {
         else{
             expression.push(parseFloat(currentText))
         }
-        console.log(expression)
         currentText = ""
         dotPressed = false
 
@@ -106,7 +103,6 @@ let clickOperator = document.querySelectorAll("#sign").forEach(signs => {
         else{
             screen.innerText += " " + signs.textContent + "\u00A0"
         }
-        console.log(expression)
         screen.scrollLeft = screen.scrollWidth
         expression.push(signs.textContent)
     })
@@ -137,15 +133,11 @@ let resultEqualSign = document.querySelector(".Enter").addEventListener("click",
     else{
             expression.push(parseFloat(currentText))
     }
-    console.log(expression)
     let tempResult = 0
     let operator = expression[1]
     tempResult = Math.round(operate(operator, expression[0], expression[2]) * 100) / 100
-    console.log(expression)
     expression = []
     currentText = String(tempResult)
-    console.log(tempResult)
-    console.log(expression)
     let result = document.querySelector(".screen")
     let displayResult = document.createElement("p")
     displayResult.classList.add("displayResult")
