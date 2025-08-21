@@ -60,16 +60,23 @@ body{
     position: relative;
     width: 60%;
 }
-
+.background-tree{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.logo{
+  max-height: 170px;
+  flex-shrink: 1;
+}
 .overlay {
   position: absolute;
   color: #f1f1f1;
-  top: 15%;
+  top: 20%;
   width: 100%;
   padding: 20px;
   text-align: center;
   display: flex;
-  width: 100%;
   height: 200px;
   justify-content: center;
   align-items: center;
@@ -80,9 +87,7 @@ body{
   font-size: 100px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.logo{
-  max-height: 170px;
-}
+
 
 .introduction{
   padding: 50px;
@@ -93,8 +98,63 @@ body{
   width: 90%;
   font-weight: bold;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
 }
 span{
   font-style: italic;
+}
+.main-body{
+    background-color: rgb(244, 242, 242);
+}
+
+.data-section{
+  padding: 12px;
+  padding-left: 68px;
+  flex: 1;
+  background: #fbf9f9;
+  box-sizing: border-box;
+  font-size: 20px;
+  box-shadow: 5px 10px 8px rgba(0,0,0,0.3);
+  padding-bottom: 30px;
+}
+.user-input, .input-box{
+  display: flex;
+
+}
+.user-input{
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  max-width: 70%;
+}
+.input-box{
+  flex-direction: column;
+}
+input{
+  border: #E5E7EB 2px solid;
+  border-radius: 5px;
+}
+input:invalid{
+  border: red solid;
+}
+input:focus{
+  border: blue solid;
+}
+
+.account-generate{
+  padding: 30px;
+  padding-left: 68px;
+  font-size: 20px;
+}
+.create-account{
+  color: rgb(255, 255, 255);
+  background-color: #596D48;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  width: 30%;
+}
+a{
+  color: #596D48;
 }
