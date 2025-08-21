@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style-first-form.css">
+    <title>My test page</title>
+  </head>
+  
+  <body>
+    <p>This is my page</p>
+    <form action="/my-handling-form-page" method="post">
+        <p>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="user_name"></p>
+        <p>
+            <label for="mail">Email: </label>
+            <input type="email" id="mail" name="user_email"></p>
+        <p>
+            <label for="msg">Message: </label>
+            <textarea name="user_message" id="msg" maxlength="150" minlength="3" required></textarea></p>
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="10" value="0">
+        <div class="buttons">
+            <p class="button submit">
+                <button type="submit">Send your message</button>
+            </p>
+            <p class="button reset">
+                <button type="reset">Reset Data</button>
+            </p>
+        </div>
+    </form>
+</body>
+</html>
