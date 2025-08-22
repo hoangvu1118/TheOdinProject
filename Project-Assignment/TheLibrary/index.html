@@ -23,6 +23,27 @@
             <button class="function add">New Book</button>
         </div>
     </div>
+    <div id="form-box">
+        <form action="" id="forms">
+            <label for="title">Title:
+                <input id="title" name="title" type="text" required>
+            </label>
+            <label for="author">Author:
+                <input id="author" name="author" type="text" required>
+            </label>
+            <label for="pages">Pages:
+                <input id="pages" name="pages" type="number" required>
+            </label>
+            <label for="read">
+                Complete:
+                <select name="read" id="read">
+                    <option value="true">Done</option>
+                    <option value="false">Not Yet</option>
+                </select>
+            </label>
+            <button type="submit" class="submit">Create</button>
+        </form>
+    </div>
 </body>
 
 </html>
