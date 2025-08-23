@@ -20,10 +20,10 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(book)
 }
 
-addBookToLibrary("Super Memory", "Eran Katz", "357", true)
-addBookToLibrary("Crazy Memory", "Katze Wang", "162", false)
-addBookToLibrary("Super Duber", "Evan Tahan", "37", false)
-addBookToLibrary("KingKong2", "Monkey Aatz", "29", true)
+// addBookToLibrary("Super Memory", "Eran Katz", "357", true)
+// addBookToLibrary("Crazy Memory", "Katze Wang", "162", false)
+// addBookToLibrary("Super Duber", "Evan Tahan", "37", false)
+// addBookToLibrary("KingKong2", "Monkey Aatz", "29", true)
 
 
 const formBox = document.querySelector("#form-box")
@@ -45,18 +45,20 @@ booksForm.addEventListener("submit", (e) => {
     let pages = formData.get("pages")
     // formData returns strings for option values, convert to boolean
     let read = formData.get("read") === 'true'
+    console.log(read)
     addBookToLibrary(title, author, pages, read)
     formBox.style.display = 'none'
     updateShelf()
-    numberOfBook += 1
     booksForm.reset()
 })
+
 let numberOfBook = 0
 let shelf = document.querySelector(".shelf")
 function updateShelf(){
-    let i = numberOfBook
-    for (; i < myLibrary.length; i++){
+    numberOfBook += 1
+    for (let i = numberOfBook-1; i < myLibrary.length; i++){
         let boxSquare = document.createElement("div")
+        console.table(myLibrary)
         let readStatus = myLibrary[i].read
         boxSquare.classList.add("book")
         boxSquare.dataset.id = myLibrary[i].id
