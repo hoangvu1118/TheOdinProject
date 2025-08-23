@@ -73,13 +73,15 @@ function interactWithBook(book, readStatus){
     let viewButton = document.createElement("button")
     let deleteButton = document.createElement("button")
     let toggleReadStatus = document.createElement("input")
+    toggleReadStatus.dataset.id = book.dataset.id
 
     // keep checkbox and label without using duplicated IDs
     const label = document.createElement("label");
     toggleReadStatus.type = "checkbox"
     // pre-check according to readStatus
     toggleReadStatus.checked = !!readStatus
-
+    toggleReadStatus.classList.add("checkBox")
+    
     viewButton.classList.add("viewButton")
     viewButton.textContent = "View"
 
@@ -109,5 +111,14 @@ function processReadStatus(book, checkbox ,readStatus){
     book.style.border = '5px solid grey';
     checkbox.checked = false
     }
+
+    checkbox.addEventListener('change', () => {
+        const id = checkbox.dataset.id;
+        const idx = myLibrary.findIndex(b => b.id === id);
+        if (idx > -1) {
+            myLibrary[idx].read = checkbox.checked;
+            processReadStatus(book, checkbox, checkbox.checked);
+        }
+    });
 }
 
