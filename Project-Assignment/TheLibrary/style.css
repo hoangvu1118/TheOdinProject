@@ -130,3 +130,51 @@ input{
 .shelf .book .deleteBook:hover{
     background: #8B0000
 }
+
+/* dialog box */
+dialog.showBook {
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  width: min(90vw, 480px);      /* responsive width */
+  max-width: 90%;
+  background: #fff;             /* dialog background */
+  color: #111;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* semi-transparent page overlay */
+dialog.showBook::backdrop {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(2px);   /* optional blur of page behind */
+}
+
+/* header / content spacing */
+dialog.showBook p {
+  margin: 0 0 10px;
+}
+
+/* close button */
+dialog.showBook button {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f3f3f3;
+  cursor: pointer;
+  width: 100%;
+}
+dialog.showBook button:hover { background: rgb(208, 11, 11); }
+
+/* focus styles for accessibility */
+dialog.showBook :focus {
+  outline: 3px solid #8fb9ff;
+  outline-offset: 2px;
+}
+dialog.showBook{
+    align-self: center;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+}

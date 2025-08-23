@@ -61,7 +61,13 @@ function updateShelf(){
         console.table(myLibrary)
         let readStatus = myLibrary[i].read
         boxSquare.classList.add("book")
+
         boxSquare.dataset.id = myLibrary[i].id
+        boxSquare.dataset.title = myLibrary[i].title
+        boxSquare.dataset.author = myLibrary[i].author
+        boxSquare.dataset.pages = myLibrary[i].pages
+        boxSquare.dataset.read = myLibrary[i].read
+        
         shelf.appendChild(boxSquare)
         boxSquare.textContent = myLibrary[i].title
         shelf.scrollTop = shelf.scrollHeight
@@ -84,6 +90,9 @@ function interactWithBook(book, readStatus){
     
     viewButton.classList.add("viewButton")
     viewButton.textContent = "View"
+    viewButton.addEventListener("click", () => {
+        displayBookData(book)
+    })
 
     deleteButton.classList.add("deleteBook")
     deleteButton.textContent = "Delete"
@@ -117,8 +126,31 @@ function processReadStatus(book, checkbox ,readStatus){
         const idx = myLibrary.findIndex(b => b.id === id);
         if (idx > -1) {
             myLibrary[idx].read = checkbox.checked;
+            book.dataset.read = checkbox.checked
             processReadStatus(book, checkbox, checkbox.checked);
         }
     });
 }
 
+function displayBookData(book){
+    let dialog = document.createElement("dialog")
+    dialog.classList.add("showBook")
+    let closeDialog = document.createElement("button")
+    let id = document.createElement("p")
+    let title = document.createElement("p")
+    let author = document.createElement("p")
+    let pages = document.createElement("p")
+    let read = document.createElement("p")
+
+    id.textContent = "ID: " + book.dataset.id
+    title.textContent = "Title: " + book.dataset.title
+    author.textContent ="Author: " + book.dataset.author
+    pages.textContent = "Pages: "+ book.dataset.pages
+    read.textContent = "Complete: "+ book.dataset.read
+    closeDialog.textContent = 'Close'
+    closeDialog.addEventListener('click', () => dialog.close());
+
+    dialog.append(id, title, author, pages, read, closeDialog)
+    document.body.appendChild(dialog)
+    dialog.showModal()
+}
