@@ -23,7 +23,7 @@ function addBookToLibrary(title, author, pages, read) {
 addBookToLibrary("Super Memory", "Eran Katz", "357", true)
 addBookToLibrary("Crazy Memory", "Katze Wang", "162", false)
 addBookToLibrary("Super Duber", "Evan Tahan", "37", false)
-addBookToLibrary("KingKong2", "Monkey Aatz", "29", false)
+addBookToLibrary("KingKong2", "Monkey Aatz", "29", true)
 
 
 const formBox = document.querySelector("#form-box")
@@ -43,7 +43,8 @@ booksForm.addEventListener("submit", (e) => {
     let title = formData.get("title")
     let author = formData.get("author")
     let pages = formData.get("pages")
-    let read = formData.get("read") ? true : false
+    // formData returns strings for option values, convert to boolean
+    let read = formData.get("read") === 'true'
     addBookToLibrary(title, author, pages, read)
     formBox.style.display = 'none'
     updateShelf()
@@ -56,34 +57,55 @@ function updateShelf(){
     let i = numberOfBook
     for (; i < myLibrary.length; i++){
         let boxSquare = document.createElement("div")
+        let readStatus = myLibrary[i].read
         boxSquare.classList.add("book")
+        boxSquare.dataset.id = myLibrary[i].id
         shelf.appendChild(boxSquare)
         boxSquare.textContent = myLibrary[i].title
         shelf.scrollTop = shelf.scrollHeight
-        interactWithBook(boxSquare)
-
+        interactWithBook(boxSquare, readStatus)
     }
 }
 
-function interactWithBook(book){
+function interactWithBook(book, readStatus){
     let viewButton = document.createElement("button")
     let deleteButton = document.createElement("button")
     let toggleReadStatus = document.createElement("input")
 
-    toggleReadStatus.id = "checkbox"
+    // keep checkbox and label without using duplicated IDs
     const label = document.createElement("label");
-    label.htmlFor = "checkbox";
-
-
     toggleReadStatus.type = "checkbox"
+    // pre-check according to readStatus
+    toggleReadStatus.checked = !!readStatus
 
     viewButton.classList.add("viewButton")
     viewButton.textContent = "View"
 
     deleteButton.classList.add("deleteBook")
     deleteButton.textContent = "Delete"
+    deleteButton.addEventListener('click', () =>{
+        const id = book.dataset.id
+        const idx = myLibrary.findIndex(b => b.id === id);
+        if(idx > -1) myLibrary.splice(idx, 1)
+        book.remove()
+        numberOfBook -= 1
+    })
 
     label.appendChild(toggleReadStatus)
     label.append(" Read")
     book.append(viewButton, deleteButton, label)
+    processReadStatus(book, toggleReadStatus, readStatus)
 }
+
+function processReadStatus(book, checkbox ,readStatus){
+    if(readStatus == true){
+        book.style.border = '5px solid #7CFC00'
+        // use the standard checked property
+        checkbox.checked = true
+    }
+    else{
+    book.style.border = '5px solid grey';
+    checkbox.checked = false
+    }
+}
+
