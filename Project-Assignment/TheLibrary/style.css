@@ -95,13 +95,14 @@ input{
 .book{
     width: 100px;
     height: 150px;
-    background: white;
-    border:  5px solid black;
+    border-radius: 5px;
+    background: #F5DEB3;
     text-align: center;
     font-weight: bolder;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 .shelf{
     gap: 10px;
@@ -109,12 +110,23 @@ input{
 }
 
 .shelf .book>button{
-    margin-top: auto;
-    width: 50px;
-    height: 20px;
-    background: red;
+    width: 80%;
+    height: 30px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+.shelf .book .viewButton{
+    background: #7FFF00;
 }
 
-input[type="checkbox"], label {
-    display: inline-block;
+.shelf .book .viewButton:hover{
+    
+    background: #1DB954;
+}
+.shelf .book .deleteBook{
+    background: #FF0000
+    
+}
+.shelf .book .deleteBook:hover{
+    background: #8B0000
 }

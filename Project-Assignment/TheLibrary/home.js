@@ -76,8 +76,13 @@ function interactWithBook(book){
 
 
     toggleReadStatus.type = "checkbox"
+
     viewButton.classList.add("viewButton")
+    viewButton.textContent = "View"
+
     deleteButton.classList.add("deleteBook")
+    deleteButton.textContent = "Delete"
+
     label.appendChild(toggleReadStatus)
     label.append(" Read")
     book.append(viewButton, deleteButton, label)
