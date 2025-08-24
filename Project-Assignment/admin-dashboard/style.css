@@ -29,13 +29,11 @@
 
 
 .projects{
-    grid-row: span 2;
+    grid-row: span 3;
     display: grid;
-    grid-template-rows: 0.2fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 0.75fr 0.75fr 0.75fr;
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 10px;
 }
-
 .sidebar{
     display: flex;
     flex-direction: column;
@@ -140,7 +138,7 @@
     border-color: orange;
     border-width: 7px;
     margin-left: 20px;    
-    height: 200px;
+    height: 230px;
     background: white;
     border-radius: 10px;
     display: grid;
@@ -158,4 +156,55 @@
 .supplement button{
     width: 20px;
     height: 20px;
+}
+
+.annoucement{
+    display: grid;
+    grid-template-rows: 0.2fr 1fr;  
+    margin-right: 15px;
+}
+.annouce-data{
+    margin-left: 10px;
+    padding: 30px 30px 5px 25px ;
+    background: white;
+    grid-column: span 2;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.projects-name>p, .announce-text>p{
+    color: grey
+}
+.announce-text>p{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.announce-text{
+    display: flex;
+    padding: 0px 5px;
+    flex-direction: column;
+    border-bottom: 1px solid grey;
+}
+.announce-text:last-of-type{
+    border: none;
+}
+.board{
+    margin: 5px 15px 16px 10px;
+    padding-top: 10px;
+    background: white;
+    border-radius: 15px;
+    display: grid;
+    grid-column: span 2;
+    flex-direction: column;
+    background: white;
+    justify-content: center;
+}
+.trending{
+    display: grid;
+    grid-template-rows: 0.1fr 1fr;
+}
+.trending .title{
+    margin-top: 0;
+
 }
