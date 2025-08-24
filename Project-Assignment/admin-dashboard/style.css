@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    display: grid;
+    height: 1000px;
+    width: 100%;
+    grid-template-columns: 0.75fr 3fr;
+    grid-template-rows: 0.5fr 3fr;
+    gap: 15px 10px;
+}
+
+.sidebar{
+    grid-row: span 2;
+}
+
+.info-container{
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.info-container>div{
+    background: wheat;
+    border: 2px black solid;
+}
+
+.projects{
+    grid-row: span 2;
+}
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    background: #00aeff;
+    color: white;
+   
+
+}
+.sidebar h1{
+    font-size: 35px;
+    margin-bottom: 50px;
+}
+
+.section-1>ul, .section-2>ul{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    row-gap: 15px;
+}
+
+.nav{
+    display: grid;
+}
+
+.nav .upper-section, .lower-section{
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 100px;
+}
+.upper-section{
+    display: flex;
+    column-gap: 20px;
+}
+.upper-section button{
+    height: 25px;
+    width: 50px;
+}
+.search-box{
+    width: 600px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: rgb(205, 214, 216);
+    border: none;
+}
+.upper-section .notification{
+    margin-left: auto;
+    
+}
+
+.greet{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
+}
+.greet .logo-main{
+    grid-row: span 2;
+    background: blue;
+}
+.user-name{
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 5px;
+}
+.lower-section button{
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    background: #00aeff;
+    border: none;
+}
+.new{
+    margin-left: auto;
+}
+.lower-section{
+    display: flex;
+    gap: 25px;
+}
