@@ -42,7 +42,6 @@ function checkWinner(gameboard, player1, player2){
 
 function checkAvailableChoice(choose, gameboard){
     let index = gameboard.available_choice.findIndex(number => number === choose)
-    console.log(`check chosen index ${index}`)
     while(index == -1){
         choose = parseInt(prompt(`You have to choose different box != ${choose}: `))
         index = gameboard.available_choice.findIndex(number => number === choose)
@@ -79,9 +78,9 @@ function controlGamePlay(){
         let index2 = gameboard.available_choice.findIndex(number => number === two_choose)
         gameboard.available_choice.splice(index2, 1)
 
-        console.log(`Round ${i+1}`)
-        player1.showChoice()
-        player2.showChoice()
+        console.log(`Round ${i+1}`) // NEED TO DELETE
+        player1.showChoice()    // NEED TO DELETE
+        player2.showChoice()    // NEED TO DELETE
 
         if(i >= 2){
             let winners = checkWinner(gameboard, player1, player2)
@@ -95,7 +94,7 @@ function controlGamePlay(){
     }
     return "Draw";
 }
-console.log(controlGamePlay())
+// console.log(controlGamePlay())
 // let testGame = new Gameboard()
 // let index = testGame.available_choice.findIndex(number => number === 8)
 // testGame.available_choice.splice(index, 1)
