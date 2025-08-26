@@ -3,15 +3,19 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+:root { 
+        --bg: #fff8f5;
+        --panel: #fffdfb;
+        --board: #f0e9f5;
+        --x: #ff6b6b;
+        --o: #6bc1ff;
+        --accent: #ffd166;
+        --text: #2b2b2b;
+}
 body{
     display: grid;
     grid-template-columns: 1fr 2.5fr 1fr;
     height: 100vh;
-}
-
-body div{
-    border: 2px solid brown;
 }
 
 .player-1, .player-2{
@@ -19,7 +23,7 @@ body div{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
+    background: var(--bg);
 }
 
 .playerSection{
@@ -31,6 +35,8 @@ body div{
     height: 60px;
     border-radius: 50px 50px 0px 0px;
     width: 100%;
+    background: #2d2b27;
+    color: white;
 }
 
 .show-score{
@@ -42,6 +48,8 @@ body div{
     margin-top: 30px;
     width: 60%;
     justify-items: center;
+    background: #2b2b2b;
+    color: white;
 
 }
 .title-box-1{
@@ -54,17 +62,28 @@ body div{
 }
 .score{
     font-size: 35px;
+    
 }
 
 .playground{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgb(226, 223, 223);
+    color: var(--text);
+    accent-color: var(--accent);
+    z-index: 10;
+    box-shadow: 0px 5px 10px black ;
+    margin: 0px 5px 0px 5px;
 }
 .playingBox{
     margin-top: 40px;
     width: 500px;
     height: 500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3,1fr);
+    margin-bottom: 20px;
 }
 .game-name{
     display: flex;
@@ -73,6 +92,8 @@ body div{
     font-size: 40px;
     border-radius: 0px 0px 30px 30px;
     font-weight: bold;
+    background: #2b2b2b;
+    color: white;
 }
 
 .buttons{
@@ -81,10 +102,47 @@ body div{
     margin-top: 10px;
     height: 50px;
     column-gap: 5px;
+
+}
+.playingBox button{
+    background: rgb(226, 223, 223);
 }
 .buttons button{
     flex: 1;
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
+    border: none;
+    color: white;
+    background: #2b2b2b;
+    transition: background-color 0.1s ease-out;
+}
+.buttons button:hover{
+    background: grey;
+    color: black;
+}
+.box-1{
+    border-style: none solid solid none;
+}
+
+.box-2{
+    border-style: none solid solid solid;
+}
+.box-3{
+    border-style: none none solid solid;
+}
+.box-4{
+    border-style: solid solid solid none;
+}
+.box-6{
+    border-right: none;
+}
+.box-7{
+    border-style: solid solid none none;
+}
+.box-8{
+    border-bottom: none;
+}
+.box-9{
+    border-style: solid none none solid;
 }
