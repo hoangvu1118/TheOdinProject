@@ -145,5 +145,8 @@ function main(){
         dialog.close();
         controller(choice)
     })
+    let reset = document.querySelector(".reset").addEventListener("click", () => {
+        location.reload()
+    })
 }
 main()
