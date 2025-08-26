@@ -26,87 +26,124 @@ function Player(){
 }
 
 
-function checkWinner(gameboard, player1, player2){
-    let choice1 = player1.choice.sort((a,b) => b - a).join("")
-    let choice2 = player2.choice.sort((a,b) => b - a).join("")
+function checkWinner(gameboard, player){
+    let choice = player.choice.sort((a,b) => b - a).join("")
     for(let win of gameboard.winNumbers){
-        if(digitsInside(win, choice1)){
+        if(digitsInside(win, choice)){
             return 1
-        }
-        if(digitsInside(win, choice2)){
-            return 2
         }
     }
     return 0;
 }
 
-function checkAvailableChoice(choose, gameboard){
-    let index = gameboard.available_choice.findIndex(number => number === choose)
-    while(index == -1){
-        choose = parseInt(prompt(`You have to choose different box != ${choose}: `))
-        index = gameboard.available_choice.findIndex(number => number === choose)
+function checkXO_Button(text_turn, cb) {
+    const xoButtons = Array.from(document.querySelectorAll('.grid'));
+    function onClick(e) {
+        const btn = e.currentTarget;
+        btn.textContent = text_turn;
+        btn.style.color = (text_turn === "X") ? "#ff6b6b" : "#6bc1ff"
+        btn.disabled = true;
+        const index = parseInt(btn.dataset.index, 10);
+        xoButtons.forEach(b => b.removeEventListener('click', onClick));
+        cb(index);
     }
-    return choose
+    xoButtons.forEach(b => b.addEventListener('click', onClick));
 }
 
-function controlGamePlay(){
+function controller(first){
+    let insideGrid = first === 1 ? 'X' : 'O';
     let gameboard = new Gameboard()
+    let playingBox = document.querySelector(".playingBox")
+    let gridBoxes = playingBox.children
+    let gameOver = false
+
     const player1 = Player()
     const player2 = Player()
 
-    for(let i = 0; i < 5; i++){ 
-        alert(`Turn ${i+1}`)
-        let one_choose = parseInt(prompt("1 Select your move: "))
-        one_choose = checkAvailableChoice(one_choose, gameboard)
-        player1.pushChoice(one_choose)
-        if(i == 4) break
-        if(i >= 2){
-            let winners = checkWinner(gameboard, player1, player2)
-            if(winners == 1 || winners == 2){
-                return winners
-            }
-        }
-
-        let two_choose = parseInt(prompt("2 please select: "))
-        two_choose = checkAvailableChoice(two_choose, gameboard)
-        player2.pushChoice(two_choose)
-        
-
-        let index1 = gameboard.available_choice.findIndex(number => number === one_choose)
-        gameboard.available_choice.splice(index1, 1)
-
-        let index2 = gameboard.available_choice.findIndex(number => number === two_choose)
-        gameboard.available_choice.splice(index2, 1)
-
-        console.log(`Round ${i+1}`) // NEED TO DELETE
-        player1.showChoice()    // NEED TO DELETE
-        player2.showChoice()    // NEED TO DELETE
-
-        if(i >= 2){
-            let winners = checkWinner(gameboard, player1, player2)
-            if(winners == 1 || winners == 2){
-                return winners
-            }
-            else if( winners == 0 && i < 5){
-                continue
-            }
-        }
+    for(let i = 0; i< gridBoxes.length; i++){
+        gridBoxes[i].dataset.index = i
     }
-    return "Draw";
+    
+    function nextTurn(){
+        if(gameOver || gameboard.available_choice.length === 0) return displayWinner('-1');
+        checkXO_Button(insideGrid, function(index){
+            const player = (insideGrid === 'X') ? player1 : player2
+
+            let boxIndex = gameboard.available_choice.indexOf(index)
+            player.pushChoice(index)
+            gameboard.available_choice.splice(boxIndex, 1)
+            if(checkWinner(gameboard, player)){
+                gameOver = true
+                return displayWinner(insideGrid)
+            }
+            insideGrid = (insideGrid === 'X') ? 'O' : 'X';
+            nextTurn()
+        })
+    }
+    nextTurn()
 }
-// console.log(controlGamePlay())
-// let testGame = new Gameboard()
-// let index = testGame.available_choice.findIndex(number => number === 8)
-// testGame.available_choice.splice(index, 1)
-// console.log(testGame.available_choice)
-// let index1 = testGame.available_choice.findIndex(number => number === 7)
-// console.log(index1)
 
-// let index = available_choice.findIndex(number => number === 6)
-// console.log(available_choice.splice(index, 1))
-// console.log(available_choice)
-// let index1 = available_choice.findIndex(number => number === 10)
-// console.log(index1)
-// console.log(available_choice.splice(index1,1))
-// console.log(available_choice)
+function displayWinner(who){
+    const player1El = document.querySelector('.player-1');
+    const player2El = document.querySelector('.player-2');
+    const score1El = document.querySelector('.player-1 .show-score');
+    const score2El = document.querySelector('.player-2 .show-score');
 
+    // clear any previous highlight classes
+    const clearHighlights = () => {
+        player1El.classList.remove('winner', 'tie');
+        player2El.classList.remove('winner', 'tie');
+    };
+
+    clearHighlights();
+
+    if (who === '-1') {
+        // tie — give both players a subtle tie highlight
+        player1El.classList.add('tie');
+        player2El.classList.add('tie');
+    } else if (who === 'X') {
+        player1El.classList.add('winner');
+        score1El.textContent = String(parseInt(score1El.textContent || '0', 10) + 1);
+    } else {
+        player2El.classList.add('winner');
+        score2El.textContent = String(parseInt(score2El.textContent || '0', 10) + 1);
+    }
+
+    // remove highlight after a short delay
+    setTimeout(() => {
+        clearHighlights();
+    }, 3000);
+}
+
+function main(){
+    let startgame = document.querySelector(".start").addEventListener("click", async () =>{
+        
+        const xoButtons = document.querySelectorAll('.grid');
+        xoButtons.forEach(button => {
+            button.textContent = ""
+            button.disabled = false
+        })
+
+        let dialog = document.createElement("dialog")
+        dialog.classList.add("play-first")
+        let question = document.createElement("h2")
+        let play1 = document.createElement("button")
+        let play2 = document.createElement("button")
+        play1.textContent = "Player 1"
+        play2.textContent = "Player 2"
+        question.textContent = "Who's gonna play first?"
+        dialog.append(question, play1, play2)
+        document.body.appendChild(dialog)
+        dialog.showModal()
+        
+        const choice = await new Promise((resolve) => {
+            play1.addEventListener("click", () => resolve(1), { once: true });
+            play2.addEventListener("click", () => resolve(2), { once: true });
+        });
+
+        console.log("User chose:", choice);
+        dialog.close();
+        controller(choice)
+    })
+}
+main()

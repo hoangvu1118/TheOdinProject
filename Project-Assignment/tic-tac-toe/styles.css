@@ -23,7 +23,21 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background: var(--bg);
+    background-color: var(--bg);
+    z-index: -5;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.18s ease;
+}
+
+.player-1.winner, .player-2.winner{
+    background: linear-gradient(90deg, rgba(0, 255, 115, 0.425), rgba(152, 251, 152, 0.638));
+    box-shadow: 0 6px 18px rgba(40,199,111,0.12) inset;
+    transform: translateY(-2px);
+}
+
+.player-1.tie, .player-2.tie{
+    background: linear-gradient(90deg, rgba(255, 209, 102, 0.619), rgba(227, 227, 6, 0.827));
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06) inset;
+    transform: translateY(-2px);
 }
 
 .playerSection{
@@ -124,7 +138,6 @@ body{
 .box-1{
     border-style: none solid solid none;
 }
-
 .box-2{
     border-style: none solid solid solid;
 }
@@ -145,4 +158,52 @@ body{
 }
 .box-9{
     border-style: solid none none solid;
+}
+.grid{
+    font-size: 100px;
+    border-color: grey;
+}
+.grid:hover{
+    background: rgb(196, 192, 192);
+    cursor: pointer;
+}
+
+
+dialog {
+    position: absolute;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    width: 500px;
+    height: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    column-gap: 10px;
+    background: #98FB98;
+    backdrop-filter: 10px;
+    margin-top: 30px;
+
+}
+dialog h2{
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+}
+dialog button{
+    height: 200px;
+    border-radius: 10px;
+    border: none;
+    font-size: 30px;
+    font-weight: bold;
+}
+dialog button:hover{
+    background-color: #EA5455;
+}
+dialog::backdrop {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);   /* optional blur of page behind */
 }
