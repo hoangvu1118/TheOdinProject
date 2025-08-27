@@ -112,7 +112,7 @@ function displayWinner(who){
     // remove highlight after a short delay
     setTimeout(() => {
         clearHighlights();
-    }, 3000);
+    }, 800);
 }
 
 function main(){
