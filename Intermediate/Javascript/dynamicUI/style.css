@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(#F7F0F5, #d3dfd5);
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background-color: #023436;
+    transition: all 0.4s ease;
+}
+.sidebar.collapsed{
+    width: 85px;
+}
+
+.sidebar-nav .nav-link .nav-label{
+    transition: opacity 0.3 ease;
+}
+
+.sidebar.collapsed .nav-link .nav-label{
+    opacity: 0;
+    pointer-events: none;
+}
+.sidebar .sidebar-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 20px;
+}
+.sidebar-header .header-logo img{
+    width: 50px;
+    height: 50px;
+    display: block;
+    object-fit: contain;
+    border-radius: 50%;
+}
+.sidebar-nav .nav-item .nav-link{
+    color: #fff;
+    display: flex;
+    gap: 12px;
+    white-space: nowrap;
+    padding: 11px 15px;
+    border: 1px solid #023436;
+    border-radius: 8px;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.4s ease;
+}
+.sidebar-nav .nav-item:hover > .nav-link{
+    color: #151A2E;
+    background-color: #EEF2FF;
+}
+.sidebar.sidebar.collapsed .sidebar-toggle{
+    transform: translate(-4px, 65px);
+}
+.sidebar-nav .nav-list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-weight: bold;
+    padding: 0 15px;
+    transform: translateY(15px);
+    transition: 0.4s ease;
+}
+.sidebar.collapsed .sidebar-nav .first{
+    transform: translateY(70px);
+}
+.sidebar-header .sidebar-toggle{
+    position: absolute;
+    right: 20px;
+    height: 35px;
+    width: 35px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: white;
+    transition: 0.4s ease;
+}
+.sidebar-header .sidebar-toggle span{
+    font-size: 1.75rem;
+}
+
+.sidebar-header .sidebar-toggle:hover{
+    background: #bbeee3;
+}
+.sidebar-nav .second{
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+}
+@media (max-width: 768px){
+    .sidebar.collapsed{
+        width: 260px;
+        left: -260px;
+    }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <img src="#">
+  <button class="newGif">New</button>
+<script>
+  const img = document.querySelector('img');
+  let newgif = document.querySelector(".newGif").addEventListener("click", () => getnewImage());
+  async function getnewImage(){
+    try{
+      let image = await fetch('https://api.giphy.com/v1/gifs/random?api_key=R0X1ZQoQutSI1YqMSbN6vRFumEGlux35', {mode: 'cors'})
+      const dataI  = await image.json();
+      img.src = dataI.data.images.original.url
+      } catch(err){
+          console.log(err)
+      }
+  }
+</script>
+
+
+</body>
+</html>

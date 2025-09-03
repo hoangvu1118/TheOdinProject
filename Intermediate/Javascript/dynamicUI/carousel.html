@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+
+    <title>Image Carousel</title>
+    <meta name="description" content="DESCRIPTION">
+
+    <link href="carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script defer src="carousel.js"></script>
+</head>
+
+<body>
+    <section aria-label="Newest Photos">
+        <div class="carousel" data-carousel>
+            <button class="prev" data-carousel-button="prev">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <ul data-slides>
+                <li class="slide" data-active>
+                    <img src="nature1.jpg" alt="Nature 1">
+                </li>
+                <li class="slide">
+                    <img src="nature2.jpg" alt="Nature 2">
+                </li>
+                <li class="slide">
+                    <img src="nature3.jpg" alt="Nature 3">
+                </li>
+            </ul>
+            <button class="next" data-carousel-button="next">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+            <div class="navigation" showActiveDot>
+                <div class="dot" data-active-dot></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
